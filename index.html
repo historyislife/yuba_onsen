@@ -30,7 +30,12 @@
 <main id="main">
   <!-- 01 ファーストビュー：現在の施設写真ではなく営業当時の資料写真 -->
   <section class="hero" id="top" aria-labelledby="hero-title">
-    <img class="hero-image" src="assets/images/old_exterior.webp" alt="山を背に建つ湯迫温泉の営業当時の外観" width="420" height="289" fetchpriority="high">
+    <!-- 高解像度の提供写真3枚。切替間隔はmain.jsのHERO_INTERVALで変更 -->
+    <div class="hero-slides" id="hero-slides" aria-label="営業当時の写真">
+      <img class="hero-image hero-slide is-active" src="assets/images/old_garden_02.webp" alt="提灯の並ぶ建物と木々に囲まれた営業当時の庭園" width="2004" height="1465" fetchpriority="high" data-caption="営業当時の庭園">
+      <img class="hero-image hero-slide" src="assets/images/old_bath_03.webp" alt="木々に囲まれた営業当時の浴場" width="2140" height="1427" decoding="async" aria-hidden="true" data-caption="営業当時の浴場">
+      <img class="hero-image hero-slide" src="assets/images/old_taishuengeki.webp" alt="色鮮やかな衣装の演者が並ぶ営業当時の大衆演劇" width="1669" height="1125" decoding="async" aria-hidden="true" data-caption="営業当時の大衆演劇">
+    </div>
     <div class="hero-shade"></div>
     <div class="hero-content">
       <p class="hero-location">岡山・湯迫温泉</p>
@@ -39,7 +44,16 @@
       <p class="hero-status">再生プロジェクト進行中 <span>／ 現在は営業再開前です</span></p>
       <a class="hero-link" href="#project">再生の歩みを知る <span aria-hidden="true">↓</span></a>
     </div>
-    <p class="hero-caption">営業当時の外観 ／ 当時のパンフレットより</p>
+    <div class="hero-footer">
+      <p class="hero-caption" id="hero-caption">営業当時の庭園 ／ 営業当時の資料より</p>
+      <div class="hero-controls" role="group" aria-label="トップ写真の切り替え" hidden>
+        <button type="button" id="hero-prev" aria-label="前の写真" aria-controls="hero-slides">‹</button>
+        <span class="hero-counter" id="hero-counter" aria-label="全3枚中1枚目">1 / 3</span>
+        <button type="button" id="hero-next" aria-label="次の写真" aria-controls="hero-slides">›</button>
+        <button type="button" class="hero-pause" id="hero-pause" aria-label="写真の自動切り替えを一時停止">一時停止</button>
+      </div>
+    </div>
+    <p class="sr-only" id="hero-announcement" aria-live="polite" aria-atomic="true"></p>
   </section>
   <div class="status-band"><p><span class="status-label">現在の状況</span>ライフライン復旧済み。<br class="mobile-break">健康村を先行して再生していきます。</p></div>
 
@@ -59,8 +73,8 @@
     <div class="container">
       <div class="section-intro"><div><p class="eyebrow">第一段階 ─ 健康村の再生</p><h2 id="kenkomura-title">まず、健康村から。</h2></div><p>お湯にくつろぎ、舞台を楽しむ。<br>そんな時間を、もう一度この場所で。<br>健康村を先行して再生していきます。</p></div>
       <div class="feature-grid">
-        <article class="feature"><figure><img src="assets/images/old_bath.webp" alt="木々に囲まれた営業当時の浴場" width="973" height="662" loading="lazy"><figcaption>営業当時の浴場 ／ 当時のパンフレットより</figcaption></figure><div class="feature-copy"><span class="feature-number" aria-hidden="true">01</span><h3>日帰り温泉の復活</h3><p>気軽に立ち寄り、湯に親しめる場所へ。設備や内装の修繕を進め、日帰り温泉の再開を目指します。</p></div></article>
-        <article class="feature"><figure><img src="assets/images/old_stagehall.webp" alt="正面に舞台を備えた営業当時の大広間" width="875" height="510" loading="lazy"><figcaption>営業当時の大広間・舞台 ／ 当時のパンフレットより</figcaption></figure><div class="feature-copy"><span class="feature-number" aria-hidden="true">02</span><h3>大衆演劇の復活</h3><p>舞台を囲み、芝居を楽しむひとときを再び。健康村で大衆演劇を楽しめる場の復活を目指します。</p></div></article>
+        <article class="feature"><figure><img src="assets/images/old_bath_03.webp" alt="木々に囲まれた営業当時の浴場" width="2140" height="1427" loading="lazy"><figcaption>営業当時の浴場 ／ 当時のパンフレットより</figcaption></figure><div class="feature-copy"><span class="feature-number" aria-hidden="true">01</span><h3>日帰り温泉の復活</h3><p>気軽に立ち寄り、湯に親しめる場所へ。設備や内装の修繕を進め、日帰り温泉の再開を目指します。</p></div></article>
+        <article class="feature"><figure><img src="assets/images/old_taishuengeki.webp" alt="演者たちが舞台に並ぶ営業当時の大衆演劇" width="1669" height="1125" loading="lazy"><figcaption>営業当時の大衆演劇</figcaption></figure><div class="feature-copy"><span class="feature-number" aria-hidden="true">02</span><h3>大衆演劇の復活</h3><p>舞台を囲み、芝居を楽しむひとときを再び。健康村で大衆演劇を楽しめる場の復活を目指します。</p></div></article>
       </div>
       <p class="section-note">営業再開時期・営業時間・料金・公演日程は、決まり次第お知らせします。</p>
     </div>
@@ -68,16 +82,16 @@
 
   <!-- 04 白雲閣：計画段階であることを明示 -->
   <section class="section hakuunkaku container" id="hakuunkaku" aria-labelledby="hakuunkaku-title">
-    <figure class="garden-photo"><img src="assets/images/old_garden.webp" alt="提灯の灯る建物と木々が見える営業当時の庭園" width="930" height="674" loading="lazy"><figcaption>営業当時の庭園 ／ 当時のパンフレットより</figcaption></figure>
+    <figure class="garden-photo"><img src="assets/images/old_garden_02.webp" alt="提灯の灯る建物と木々が見える営業当時の庭園" width="2004" height="1465" loading="lazy"><figcaption>営業当時の庭園 ／ 当時のパンフレットより</figcaption></figure>
     <div class="hakuunkaku-copy"><p class="eyebrow">第二段階 ─ 白雲閣の再生</p><h2 id="hakuunkaku-title">そして、白雲閣へ。</h2><p>健康村の再生の、その先へ。<br>白雲閣を、再び温泉旅館として迎えられる場所にしていく計画です。</p><p>当時のパンフレットには、庭園や館内、浴場、大広間の姿が残されています。その記憶を受け継ぎながら、建物を再び生かしていく道を探っていきます。</p><p class="muted">具体的な再開時期や宿泊内容は、今後お知らせします。</p>
-      <figure class="interior-photo"><img src="assets/images/old_interior.webp" alt="岩組みや橋が見える営業当時の館内" width="465" height="438" loading="lazy"><figcaption>営業当時の館内</figcaption></figure>
+      <figure class="interior-photo"><img src="assets/images/old_interior_02.webp" alt="岩組みや橋が見える営業当時の館内" width="1006" height="995" loading="lazy"><figcaption>営業当時の館内</figcaption></figure>
     </div>
   </section>
 
   <!-- 05 記憶：全写真を原寸比率のまま拡大表示できるギャラリー -->
   <section class="section memories" id="memories" aria-labelledby="memories-title"><div class="container">
     <div class="section-intro"><div><p class="eyebrow">写真に残る、かつての姿</p><h2 id="memories-title">湯迫温泉の記憶</h2></div><p>当時のパンフレットをひらくと、<br>この場所で過ごした時間が見えてきます。</p></div>
-    <p class="gallery-note">すべて営業当時の写真です。写真を選ぶと拡大できます。</p>
+    <p class="gallery-note">営業当時の写真19枚を掲載しています。写真を選ぶと全体を拡大してご覧いただけます。</p>
     <div class="gallery">
       <figure class="gallery-wide"><a class="gallery-link" href="assets/images/old_exterior.webp" data-caption="営業当時の外観 ／ 当時のパンフレットより" aria-label="営業当時の外観を拡大"><img src="assets/images/old_exterior.webp" alt="山を背に建つ営業当時の外観" width="420" height="289" loading="lazy"><span aria-hidden="true">＋</span></a><figcaption>営業当時の外観</figcaption></figure>
       <figure><a class="gallery-link" href="assets/images/old_garden.webp" data-caption="営業当時の庭園 ／ 当時のパンフレットより" aria-label="営業当時の庭園を拡大"><img src="assets/images/old_garden.webp" alt="営業当時の庭園と建物" width="930" height="674" loading="lazy"><span aria-hidden="true">＋</span></a><figcaption>営業当時の庭園</figcaption></figure>
@@ -85,7 +99,8 @@
       <figure><a class="gallery-link" href="assets/images/old_stagehall.webp" data-caption="営業当時の大広間・舞台 ／ 当時のパンフレットより" aria-label="営業当時の大広間・舞台を拡大"><img src="assets/images/old_stagehall.webp" alt="営業当時の大広間と舞台" width="875" height="510" loading="lazy"><span aria-hidden="true">＋</span></a><figcaption>営業当時の大広間・舞台</figcaption></figure>
       <figure><a class="gallery-link" href="assets/images/old_bath.webp" data-caption="営業当時の浴場 ／ 当時のパンフレットより" aria-label="営業当時の浴場を拡大"><img src="assets/images/old_bath.webp" alt="営業当時の浴場と木々" width="973" height="662" loading="lazy"><span aria-hidden="true">＋</span></a><figcaption>営業当時の浴場</figcaption></figure>
     </div>
-    <p class="section-note">写真：当時のパンフレットより。現在の施設・設備や、再開後のサービスを示すものではありません。</p>
+<details class="archive-more"><summary><span>営業当時の写真をもっと見る</span><span class="archive-count">追加14枚</span></summary><div class="archive-content"><section class="archive-group" aria-label="湯処の記憶"><h3>湯処の記憶</h3><div class="archive-grid"><figure><a class="gallery-link" href="assets/images/old_bath_02.webp" data-caption="営業当時の浴場の岩組み" aria-label="営業当時の浴場の岩組みを拡大"><img src="assets/images/old_bath_02_thumb.webp" alt="岩や壺が配された営業当時の浴場" width="946" height="949" loading="lazy" decoding="async"><span aria-hidden="true">＋</span></a><figcaption>営業当時の浴場の岩組み</figcaption></figure><figure><a class="gallery-link" href="assets/images/old_bath_03.webp" data-caption="営業当時の木々に囲まれた浴場" aria-label="営業当時の木々に囲まれた浴場を拡大"><img src="assets/images/old_bath_03_thumb.webp" alt="木々と木造の屋根に囲まれた営業当時の浴場" width="2140" height="1427" loading="lazy" decoding="async"><span aria-hidden="true">＋</span></a><figcaption>営業当時の木々に囲まれた浴場</figcaption></figure><figure><a class="gallery-link" href="assets/images/old_ganbanyoku.webp" data-caption="営業当時の岩盤浴" aria-label="営業当時の岩盤浴を拡大"><img src="assets/images/old_ganbanyoku_thumb.webp" alt="木を基調とした営業当時の岩盤浴室" width="722" height="457" loading="lazy" decoding="async"><span aria-hidden="true">＋</span></a><figcaption>営業当時の岩盤浴</figcaption></figure><figure><a class="gallery-link" href="assets/images/old_goemon_bath.webp" data-caption="営業当時の五右衛門風呂" aria-label="営業当時の五右衛門風呂を拡大"><img src="assets/images/old_goemon_bath_thumb.webp" alt="釜形の浴槽が並ぶ営業当時の浴場" width="722" height="467" loading="lazy" decoding="async"><span aria-hidden="true">＋</span></a><figcaption>営業当時の五右衛門風呂</figcaption></figure><figure><a class="gallery-link" href="assets/images/old_jacuzzi.webp" data-caption="営業当時の泡立つ湯船" aria-label="営業当時の泡立つ湯船を拡大"><img src="assets/images/old_jacuzzi_thumb.webp" alt="泡が立つ営業当時の湯船" width="522" height="745" loading="lazy" decoding="async"><span aria-hidden="true">＋</span></a><figcaption>営業当時の泡立つ湯船</figcaption></figure><figure><a class="gallery-link" href="assets/images/old_jet_bath.webp" data-caption="営業当時の浴槽の様子" aria-label="営業当時の浴槽の様子を拡大"><img src="assets/images/old_jet_bath_thumb.webp" alt="水流が見える営業当時の浴槽" width="464" height="309" loading="lazy" decoding="async"><span aria-hidden="true">＋</span></a><figcaption>営業当時の浴槽の様子</figcaption></figure><figure><a class="gallery-link" href="assets/images/old_sauna.webp" data-caption="営業当時のサウナ" aria-label="営業当時のサウナを拡大"><img src="assets/images/old_sauna_thumb.webp" alt="営業当時のサウナ入口" width="580" height="405" loading="lazy" decoding="async"><span aria-hidden="true">＋</span></a><figcaption>営業当時のサウナ</figcaption></figure></div></section><section class="archive-group" aria-label="館内と庭園の記憶"><h3>館内と庭園の記憶</h3><div class="archive-grid"><figure><a class="gallery-link" href="assets/images/old_garden_02.webp" data-caption="営業当時の庭園と建物" aria-label="営業当時の庭園と建物を拡大"><img src="assets/images/old_garden_02_thumb.webp" alt="木々と提灯が並ぶ営業当時の庭園" width="2004" height="1465" loading="lazy" decoding="async"><span aria-hidden="true">＋</span></a><figcaption>営業当時の庭園と建物</figcaption></figure><figure><a class="gallery-link" href="assets/images/old_interior_02.webp" data-caption="営業当時の館内の岩組みと橋" aria-label="営業当時の館内の岩組みと橋を拡大"><img src="assets/images/old_interior_02_thumb.webp" alt="岩組みと橋が配された営業当時の館内" width="1006" height="995" loading="lazy" decoding="async"><span aria-hidden="true">＋</span></a><figcaption>営業当時の館内の岩組みと橋</figcaption></figure><figure><a class="gallery-link" href="assets/images/old_decoration_cart.webp" data-caption="営業当時の館内の装飾" aria-label="営業当時の館内の装飾を拡大"><img src="assets/images/old_decoration_cart_thumb.webp" alt="飾り車と丸窓がある営業当時の館内" width="464" height="351" loading="lazy" decoding="async"><span aria-hidden="true">＋</span></a><figcaption>営業当時の館内の装飾</figcaption></figure><figure><a class="gallery-link" href="assets/images/old_lobby.webp" data-caption="営業当時のロビー" aria-label="営業当時のロビーを拡大"><img src="assets/images/old_lobby_thumb.webp" alt="受付カウンターがある営業当時のロビー" width="636" height="479" loading="lazy" decoding="async"><span aria-hidden="true">＋</span></a><figcaption>営業当時のロビー</figcaption></figure><figure><a class="gallery-link" href="assets/images/old_lounge.webp" data-caption="営業当時の館内のくつろぎの場" aria-label="営業当時の館内のくつろぎの場を拡大"><img src="assets/images/old_lounge_thumb.webp" alt="丸窓と座席がある営業当時の館内" width="698" height="507" loading="lazy" decoding="async"><span aria-hidden="true">＋</span></a><figcaption>営業当時の館内のくつろぎの場</figcaption></figure><figure><a class="gallery-link" href="assets/images/old_lounge_02.webp" data-caption="営業当時のラウンジ" aria-label="営業当時のラウンジを拡大"><img src="assets/images/old_lounge_02_thumb.webp" alt="椅子やテーブルが並ぶ営業当時のラウンジ" width="1208" height="863" loading="lazy" decoding="async"><span aria-hidden="true">＋</span></a><figcaption>営業当時のラウンジ</figcaption></figure></div></section><section class="archive-group" aria-label="舞台の記憶"><h3>舞台の記憶</h3><div class="archive-grid"><figure><a class="gallery-link" href="assets/images/old_taishuengeki.webp" data-caption="営業当時の大衆演劇" aria-label="営業当時の大衆演劇を拡大"><img src="assets/images/old_taishuengeki_thumb.webp" alt="衣装をまとった演者たちが並ぶ営業当時の大衆演劇の舞台" width="1669" height="1125" loading="lazy" decoding="async"><span aria-hidden="true">＋</span></a><figcaption>営業当時の大衆演劇</figcaption></figure></div></section></div></details>
+    <p class="section-note">写真：営業当時の資料より。現在の施設・設備や、再開後のサービスを示すものではありません。</p>
   </div></section>
 
   <!-- 06 現在地：日付・工程は確認済みの事実だけを追記 -->
@@ -101,13 +116,13 @@
   </section>
 
   <!-- 07 Instagram：正式URLの設定はjs/main.js先頭のSITE_CONFIG -->
-  <section class="instagram-section" aria-labelledby="instagram-title"><div class="container instagram-inner"><div><p class="eyebrow">日々の記録</p><h2 id="instagram-title">日々の再生の様子は<br>Instagramで。</h2><p>現場での作業や小さな変化を、<br>写真や動画でお届けしていく予定です。</p></div><div class="instagram-action"><a class="button button-light" id="instagram-link" hidden target="_blank" rel="noopener noreferrer">Instagramを見る <span aria-hidden="true">↗</span></a><p class="pending-link" id="instagram-pending">公式アカウントは準備中です</p></div></div></section>
+  <section class="instagram-section" aria-labelledby="instagram-title"><div class="container instagram-inner"><div><p class="eyebrow">日々の記録</p><h2 id="instagram-title">日々の再生の様子は<br>Instagramで。</h2><p>現場での作業や小さな変化を、<br>写真や動画でお伝えします。</p></div><div class="instagram-action"><a class="button button-light" id="instagram-link" href="https://www.instagram.com/yubaonsen/?hl=ja" target="_blank" rel="noopener noreferrer">Instagramを見る <span aria-hidden="true">↗</span></a><p class="pending-link" id="instagram-pending" hidden>公式アカウントは準備中です</p></div></div></section>
 
   <!-- 08 運営主体：資料では会社名・本店所在地・本事業との関係を確定できないため未掲載 -->
   <section class="section operator container" id="operator" aria-labelledby="operator-title"><div><p class="eyebrow">この取り組みについて</p><h2 id="operator-title">運営主体</h2></div><div><dl class="operator-data"><div><dt>プロジェクト名</dt><dd>湯迫温泉 白雲閣・健康村<br>再生プロジェクト</dd></div><div><dt>対象施設</dt><dd>湯迫温泉 白雲閣<br>湯迫温泉 健康村</dd></div><div><dt>施設所在地</dt><dd>岡山県岡山市</dd></div></dl><p class="muted">運営会社・代表者などの正式な情報は、準備が整い次第掲載します。</p><!-- TODO: 正式な会社名・代表者名・公開する会社所在地を確認後、dlに追加。登記資料の個人住所・株主情報等は掲載しない。 --></div></section>
 
-  <!-- 09 問い合わせ：未設定の間は送信できるように見せない -->
-  <section class="contact-section" id="contact" aria-labelledby="contact-title"><div class="container"><p class="eyebrow">お問い合わせ</p><h2 id="contact-title">湯迫温泉再生プロジェクトへの<br>お問い合わせ</h2><p id="contact-pending">お問い合わせ窓口は準備中です。<br>連絡先が決まり次第、こちらでご案内します。</p><a class="button" id="contact-link" hidden>お問い合わせ</a><p class="contact-notice">現在、施設は営業再開前です。<br>営業再開や公演などの情報は、決まり次第お知らせします。</p></div></section>
+  <!-- 09 問い合わせ：正式メールをHTMLにも記載し、JavaScriptなしでも利用可能 -->
+  <section class="contact-section" id="contact" aria-labelledby="contact-title"><div class="container"><p class="eyebrow">お問い合わせ</p><h2 id="contact-title">湯迫温泉再生プロジェクトへの<br>お問い合わせ</h2><p id="contact-pending" hidden>お問い合わせ窓口は準備中です。<br>連絡先が決まり次第、こちらでご案内します。</p><p class="contact-intro">プロジェクトに関するお問い合わせは、<br>下記のメールアドレスへお寄せください。</p><p class="contact-email"><a href="mailto:starboxco.ltd@gmail.com">starboxco.ltd@gmail.com</a></p><a class="button" id="contact-link" href="mailto:starboxco.ltd@gmail.com">メールで問い合わせる</a><p class="contact-help">ボタンを押すと、お使いのメールアプリが開きます。</p><p class="contact-notice">現在、施設は営業再開前です。<br>営業再開や公演などの情報は、決まり次第お知らせします。</p></div></section>
 </main>
 <footer class="site-footer container"><a class="brand" href="#top"><span class="brand-title">湯迫温泉 白雲閣・健康村</span><span class="brand-sub">再生プロジェクト</span></a><a class="back-top" href="#top">ページの先頭へ ↑</a><p>© 湯迫温泉 白雲閣・健康村 再生プロジェクト</p></footer>
 <dialog class="lightbox" aria-label="営業当時の写真を拡大表示"><button class="lightbox-close" type="button" aria-label="拡大写真を閉じる">閉じる ×</button><figure><img alt=""><figcaption></figcaption></figure></dialog>
